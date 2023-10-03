@@ -1,6 +1,6 @@
 import express from "express";
 import userRouter from "./users.js";
-import productRouter from "./products.js
+import productRouter from "./products.js"
 import authRouter from "./auth.js"
 
 
