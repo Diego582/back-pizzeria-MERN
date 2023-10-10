@@ -1,4 +1,3 @@
-
 import { model, Schema, Types } from "mongoose";
 
 
@@ -14,3 +13,4 @@ let schema = new Schema({
 let Slider = model(collection, schema)
 
 export default Slider
+
