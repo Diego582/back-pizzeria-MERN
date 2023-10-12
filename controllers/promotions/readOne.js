@@ -3,7 +3,7 @@ import Promotion from '../../models/Promotions.js';
 export default async (req, res, next) => {
     try {
         const promotionId = req.params._id; 
-        const onePromotion = await Promotion.findOne({ _id: promotionId }).select("price name photo category startDate endDate");
+        const onePromotion = await Promotion.findOne({ _id: promotionId }).select("products discount detail startDate endDate");
         
         if (onePromotion) {
             return res.status(200).json({

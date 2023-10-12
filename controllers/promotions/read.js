@@ -10,7 +10,7 @@ export default async (req, res, next) => {
     const allPromotions = await Promotion.find(
       queries,
       "-__v -createdAt -updatedAt"
-    ).select("price name photo category startDate endDate");
+    ).select("products discount detail startDate endDate");
 
     return res.status(200).json({
       success: true,
@@ -18,6 +18,6 @@ export default async (req, res, next) => {
       response: allPromotions,
     });
   } catch (error) {
-    next(error);
+    next(error); 
   }
 };
