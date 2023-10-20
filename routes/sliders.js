@@ -5,6 +5,7 @@ import read from '../controllers/sliders/read.js'
 //import readOne from '../controllers/sliders/redOne.js';
 //import update from '../controllers/sliders/update.js'
 
+
 const router = express.Router();
 router.post('/', create)
 router.get('/', read)
