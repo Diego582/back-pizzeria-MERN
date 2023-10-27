@@ -6,7 +6,10 @@ export default async (req, res, next) => {
     if (req.query.promotion_id) {
       queries._id = req.query.promotion_id;
     }
-
+    if (req.query.detail) {
+      queries.detail = new RegExp(req.query.detail, "i")
+    }
+    console.log("Queries Back", queries)
     const allPromotions = await Promotion.find(
       queries,
       "-__v -createdAt -updatedAt"
