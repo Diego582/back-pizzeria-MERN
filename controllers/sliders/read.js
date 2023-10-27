@@ -4,7 +4,7 @@ export default async (req, res, next) => {
   try {
     let queries = {};
     if (req.query.description) {
-      queries.description = new RegExp("^" + req.query.description, "i");
+      queries.description = new RegExp(req.query.description, "i");
     }
    
     let allSliders = await Slider.find(
