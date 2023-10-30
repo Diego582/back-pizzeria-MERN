@@ -27,7 +27,6 @@ export default async (req, res) => {
 
         if (response.result && response.result.reviews) {
             res.json(response.result.reviews);
-            console.log(response.result.reviews);
         } else {
             res.status(404).json({ message: 'No reviews found' });
         }
