@@ -6,6 +6,9 @@ export default async (req, res, next) => {
     if (req.query.product_id) {
       queries._id = req.query.product_id;
     }
+    if (req.query.name) {
+      queries.name = new RegExp(req.query.name, "i");
+    }
 
     const allProduct = await Product.find(
       queries,
