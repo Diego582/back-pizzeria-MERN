@@ -9,8 +9,7 @@ export default async (req, res, next) => {
     if (req.query.name) {
       queries.name = new RegExp(req.query.name, "i");
     }
-
-    const allProduct = await Product.find(
+     const allProduct = await Product.find(
       queries,
       "-__v -createdAt -updatedAt"
     ).select("price name photo category");
