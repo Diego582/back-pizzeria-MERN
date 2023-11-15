@@ -1,11 +1,12 @@
-import { model, Schema } from "mongoose";
-
+import { model, Schema, Types } from "mongoose";
+import ProductSchema from "./Product.js"
 let collection = "orders";
 
 let schema = new Schema(
   {
-    date: { type: String, required: true },
-    quantity: { type: Number },
+    cart_id: { type: Types.ObjectId, ref: "carts", required: true },
+    prod: ProductSchema,
+    quantities: { type: String, required: true },
   },
   { timestamps: true }
 );
