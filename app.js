@@ -12,6 +12,7 @@ import logger from "morgan";
 import indexRouter from "./routes/index.js";
 import notFoundHandler from "./middlewares/notFoundHandler.js";
 import errorHandler from "./middlewares/errorHandler.js";
+import passport from "passport"
 //var indexRouter = require('./routes/index');
 //var usersRouter = require('./routes/users');
 import cors from "cors";
@@ -27,7 +28,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
-
 app.use("/api", indexRouter);
 
 // catch 404 and forward to error handler
