@@ -5,7 +5,7 @@ let collection = "orders";
 let schema = new Schema(
   {
     cart_id: { type: Types.ObjectId, ref: "carts", required: true },
-    prod: ProductSchema,
+   // prod: ProductSchema,
     quantities: { type: String, required: true },
   },
   { timestamps: true }
