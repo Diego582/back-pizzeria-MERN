@@ -11,6 +11,7 @@ import passport from "../middlewares/passport.js";
 import register from "../controllers/auth/register.js";
 import signin from "../controllers/auth/signin.js";
 import token from "../controllers/auth/token.js";
+import update from "../controllers/auth/update.js"
 
 import registerSchema from "../schema/register.js";
 import signinSchema from "../schema/signinSchema.js";
@@ -46,6 +47,12 @@ router.post(
   "/signout",
   passport.authenticate("jwt", { session: false }),
   signout
+);
+
+router.post(
+  "/update/:_id", 
+  passport.authenticate("jwt", { session: false }),
+  update
 );
 
 export default router;
