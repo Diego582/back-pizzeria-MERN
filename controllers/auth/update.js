@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 export default async (req, res, next) => {
     try {
         const userId = req.params._id; 
-        const { mail, password } = req.body;
+        const { mail, newPassword } = req.body;
 
         const userToUpdate = await User.findById(userId);
         if (!userToUpdate) {
@@ -15,8 +15,8 @@ export default async (req, res, next) => {
             });
         }
 
-        if (password) {
-            const hashedPassword = await bcrypt.hash(password, 10);
+        if (newPassword) {
+            const hashedPassword = await bcrypt.hash(newPassword, 10);
             userToUpdate.password = hashedPassword;
         }
 
@@ -24,12 +24,19 @@ export default async (req, res, next) => {
             userToUpdate.mail = mail;
         }
 
-        const updatedUser = await userToUpdate.save();
+        await userToUpdate.save();
+        //await userToUpdate.save();
 
         return res.status(200).json({
             success: true,
             message: 'User updated',
-            response: updatedUser
+            response: {user:{
+                _id:userToUpdate._id,
+                name:userToUpdate.name,
+                lastName:userToUpdate.lastName,
+                mail: userToUpdate.mail,
+                photo: userToUpdate.photo}
+            ,token:req.header('authorization')}
         });
 
     } catch (error) {
