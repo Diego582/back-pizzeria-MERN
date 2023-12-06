@@ -4,7 +4,7 @@ export default async (req, res, next) => {
   try {
     let one = await User.findOne(
       { mail: req.body.mail },
-      "-__v -_id -password"
+      "-__v -password"
     );
     if (!one) {
       return res.status(400).json({
