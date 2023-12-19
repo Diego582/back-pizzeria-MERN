@@ -1,6 +1,6 @@
 import User from "../models/User.js";
 import passport from "passport";
-import { Strategy, ExtractJwt  } from "passport-jwt";
+import { Strategy, ExtractJwt } from "passport-jwt";
 
 export default passport.use(
   "jwt",
@@ -11,7 +11,6 @@ export default passport.use(
     },
     async (jwt_payload, done) => {
       try {
-      console.log( "Javier hasta aca llegaste")
         let user = await User.findOne(
           { mail: jwt_payload.mail },
           "-password -__v -_id"
@@ -22,7 +21,6 @@ export default passport.use(
           return done(null);
         }
       } catch (error) {
-        console.log(error)
         return done(error);
       }
     }
